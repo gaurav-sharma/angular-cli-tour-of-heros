@@ -6,22 +6,22 @@ import { HeroSearchService } from '../hero-search.service';
 import { Hero } from '../hero';
 
 @Component({
-	selector: 'app-hero-search',
-  templateUrl: './hero-search.component.html',
-  styleUrls: ['./hero-search.component.css'],
+    selector: 'app-hero-search',
+    templateUrl: './hero-search.component.html',
+    styleUrls: ['./hero-search.component.css'],
     providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
 
-	heroes: Observable<Hero[]>;
+    heroes: Observable<Hero[]>;
     private searchTerms = new Subject<string>();
-  constructor(private heroSearchService: HeroSearchService,
+    constructor(private heroSearchService: HeroSearchService,
         private router: Router) { }
 
-search(term: string): void {
+    search(term: string): void {
         this.searchTerms.next(term);
     }
-  ngOnInit(): void {
+    ngOnInit(): void {
         this.heroes = this.searchTerms
             .debounceTime(300)        // wait for 300ms pause in events
             .distinctUntilChanged()   // ignore if next search term is same as previous

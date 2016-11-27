@@ -7,7 +7,7 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
 
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = new Headers({ 'Content-Type': 'application/json' });
     private heroesUrl = 'app/heroes';  // URL to web api
     constructor(private http: Http) { }
     getHeroes(): Promise<Hero[]> {
